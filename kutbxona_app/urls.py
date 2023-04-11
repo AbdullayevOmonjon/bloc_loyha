@@ -4,6 +4,8 @@ from .views import *
 
 urlpatterns = [
     path('',loginview,name='login'),
+    path('register/',register,name='register'),
+    path('logout/',logout,name='logout'),
     path('bosh_sahifa/', bosh_sahifa, name='bosh_sahifa'),
     path('kitoblar/',kitoblar, name='kitob'),
     path('kitob_1/<int:son>/',kitob_1, name='kitob_1'),

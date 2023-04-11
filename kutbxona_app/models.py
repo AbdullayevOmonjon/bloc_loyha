@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Sum, Max, Min, Avg
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Book(models.Model):
@@ -27,6 +28,7 @@ class Student(models.Model):
         ("4 kurs","4 kurs"),
     ]
     name=models.CharField(max_length=30,blank=True)
+    user=models.OneToOneField(User,on_delete=models.SET_NULL,null=True)
     bituruvchi=models.BooleanField("bituruvchu",default=False)
     ol_kitob=models.SmallIntegerField("olgan kitoblari soni",default=0)
     kursi=models.CharField(max_length=50,choices=k)

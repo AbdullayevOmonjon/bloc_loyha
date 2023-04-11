@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.models import  User
 from .models import *
 from .forms import *
 # from urls import *
@@ -14,10 +15,23 @@ def loginview(request):
         user=authenticate(Username=request.POST.get("username"),
                      password=request.POST.get("password"))
         if user is None:
-            return redirect('login')
+           return redirect('bosh_sahifa')
         login(request,user)
-        return redirect('bosh_sahifa')
-    return(request,"login.html")
+        return redirect('login')
+    return render(request,"login.html")
+
+def logout(request):
+    logout(request)
+    return redirect('login')
+
+def register(request):
+    if request.method == "POST" and request.POST.get('p') == request.POST.get('pc'):
+        User.objects.create_user(
+            username=request.POST.get('l'),
+            password=request.POST.get('p')
+        )
+        return redirect('login')
+    return render(request,'register.html')
 
 # bosh sahifa 
 def bosh_sahifa(request):
