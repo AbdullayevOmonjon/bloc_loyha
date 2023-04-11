@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talaba</title>
+</head>
+<body>
+    <h2>{{talaba.name}}</h2>
+    <br>
+    <br>
+    {% if talaba.bituruvchi %}
+    <h2>Bituruvchi</h2>
+    {% else %}
+    <h2>Bituruvchi emas</h2>
+    {% endif %}
+    <br>
+    <br>
+    <h2>olgan kitoblari soni: {{talaba.ol_kitob}}</h2>
+    <br>
+    <br>
+    <h2>kursi : {{talaba.kursi}}</h2>
+    <br>
+    <br>
+    <form action="" method="post">{% csrf_token %}
+        <label for="">ism:</label>
+        <input type="text" name="i" value="{{talaba.name}}">
+        <label for="">kursi</label>
+        <input type="number" name="k" value="{{talaba.kursi}}">
+        <label for="">kitob_soni</label>
+        <input type="nuber" name="k_s" value="{{talaba.ol_kitob}}">
+        <label for="">bituruvchi</label>
+        {% if talaba.bituruvchi %}
+        <input type="checkbox" name="b" checked>
+        {% else %}
+        <input type="checkbox" name="b">
+        {% endif %}
+        <button type="submit">saqlash</button>
+    </form>
+    <a href=""><button>orqaga</button></a>
+</body>
+</html>

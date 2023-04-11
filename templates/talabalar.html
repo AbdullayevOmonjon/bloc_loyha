@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talabalar</title>
+</head>
+<body>
+    <h1>Talabalar royhati</h1>
+    <br>
+    <hr>
+    {% for talaba in talabalar %}
+    <h2>{{talaba.id}}. <a href="{% url 'talaba' talaba.id %}">{{talaba.name}}</a></h2>
+    <h2><a href="{% url 'talaba_ochir' talaba.id %}">talabani ochir</a></h2>
+    {% endfor %}
+    <br>
+    <br>
+    <hr>
+    <h1>yangi malumot qoshish</h1>
+    <form action="" method="post">{% csrf_token %}
+        {{forms}}
+        <button type="submit">qoshish</button>
+    </form>
+    <br>
+    <h1 style="color: aliceblue;background-color: black;width: 200px;text-align: center;border: 2px;
+    border-radius: 5px;border-color: brown;"><a href="{% url 'bosh_sahifa' %}">
+        Bosh_sahifa
+    </a></h1>
+   
+</body>
+</html>

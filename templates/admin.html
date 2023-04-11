@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <h1>Adminlar royhati</h1>
+    <br>
+    <hr>
+    {% for admin in adminlar %}
+    <a href="{% url 'admin_edit' admin.id %}"><h2>{{admin.id}} {{admin.name}}</h2></a>
+    {% endfor %}
+    <br>
+    <br>
+    <hr>
+    <form action="" method="post">{% csrf_token %}
+        {{admin.as_p}}
+        <button type="submit">appdet</button>
+    </form>
+</body>
+</html>

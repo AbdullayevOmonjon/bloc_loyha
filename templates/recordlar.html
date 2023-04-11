@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordlar</title>
+</head>
+<body>
+    <h1>Recordlar tartibi</h1>
+    <br>
+    <br>
+    <form  method="get">
+        <input type="text" name="qidirish" placeholder="sozni yozing">
+        <button type="submit">qidirish</button>
+    </form>
+    <br>
+    <hr>
+    {% for record in recordlar %}
+    <h2>
+        {{record.id}} <a href="{% url 'record' record.id %}">{{record.kitob_name.name}} ({{record.talab_name.name}})</a>
+    </h2>
+    <button style="border-radius: 10px;border-color: bisque;">
+        <a href="{% url 'record_ochir' record.id %}">
+            <h2 style="text-align: center;text-transform: lowercase;">ochirish</h2>
+        </a>
+    </button>
+    {% endfor %}
+    <br>
+    <form action="" method="post">{% csrf_token %}
+        {{ forma.as_p }}
+        <button type="submit">saqlash</button>
+    </form>
+</body>
+</html>

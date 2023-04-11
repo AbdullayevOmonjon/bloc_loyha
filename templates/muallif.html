@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mualliflar</title>
+</head>
+<body>
+    <h1 style="color: black;">Muallif malumotlari</h1>
+    <br>
+    <hr>
+    <h2>{{muallif.muallif_n}}</h2>
+    <br>
+    <h2>tirik :{{muallif.hayot}}</h2>
+    <br>
+    <h2>{{muallif.Kitoblar.name}}</h2>
+    <br>
+    <h2>jinsi erkak:{{muallif.jinsi}}</h2>
+    <br>
+    <h2>{{muallif.tugulan_sana}} yilda tugulgan</h2>
+    <br>
+    <h2>yozgan kitoblar soni:({{muallif.kitoblar_soni}})</h2>
+    <br>
+    {% if muallif.hayot %}
+    <h2>{{muallif.yosh}}-yoshda kirgan</h2>
+    {% else %}
+    <h2>{{muallif.yosh}}-yoshda vafot etgan</h2>
+    {% endif %}
+    <br><br><br>
+    <hr>
+    <H1>Muallif malumotlarin ozgartirish</H1>
+    <form action="" method="post">{% csrf_token %}
+        <label for="">muallif ismi</label>
+        <input type="text" name="ism" value="{{muallif.name}}">
+        <br>
+        <label for="">hayot</label>
+        <input type="text" name="hayot" value="{{muallif.hayot}}">
+        <br>
+        <label for="">kitoblari nomi</label>
+        <select name="kitob">
+            <option value="{{muallif.kitob.id}}">{{muallif.kitob.name}}</option>
+            {% for kitob in kitoblar %}
+            <option value="{{kitob.id}}">{{kitob.name}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="">jinsi</label>
+        <input type="checkbox" name="jinsi" value="{{muallif.jinsi}}">
+        <br><br>
+        <label for="">tug`ulgan sanasi</label>
+        <input type="date" name="sana" value="{{muallif.tugulan_sana}}">
+        <br><br>
+        <label for="">kitoblar soni </label>
+        <input type="number" name="soni">
+        <br><br>
+        <label for="">yoshi</label>
+        <input type="number" name="yosh" value="{{muallif.yosh}}">
+        <br><br>
+        <button type="submit">saqlash</button>
+    </form>
+</body>
+</html>

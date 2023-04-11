@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ktoblar</title>
+</head>
+<body>
+    <h1>Unversit kutibxonasidagi kitoblar</h1>
+    <br>
+    <form  method="get">
+        <input type="text" name="qidirish" placeholder="sozni yozing">
+        <button type="submit">qidirish</button>
+    </form>
+    <hr>
+    <h2><a href="{% url 'bosh_sahifa' %}">Bosh_sahifa</a></h2>
+    <br>
+    {%for kitob in kitoblar%}
+    <h2>{{kitob.id}} <a href="{% url 'kitob_1' kitob.id %}">{{kitob.name}} </a></h2>
+    <h1><a href="{% url 'kitob_ochir' kitob.id %}">delet</a></h1>
+    {%endfor%}
+    <br>
+    <hr>
+    <br>
+    <form action="/library/kitoblar/" method="post">{% csrf_token %}
+       {{forma}}
+        <button></button>
+    </form>
+</body>
+</html>

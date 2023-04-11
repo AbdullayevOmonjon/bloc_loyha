@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muallif</title>
+</head>
+<body>
+    <h1 style="color: rgb(21, 196, 21)"> Kutubxonamizda mavjud mualliflar </h1>
+    <br>
+    <br>
+    <form  method="get">
+        <input type="text" name="qidirish" placeholder="sozni yozing">
+        <button type="submit">qidirish</button>
+    </form>
+    <br>
+    <hr>
+    {%for muallif in mualliflar%}
+    <h2>{{muallif.id}}. <a href="{% url 'muallif' muallif.id %}">{{muallif.muallif_n}}</a></h2>
+    <button style="border-radius:10px;width: 100px; height:50px; margin-left: 10px;">
+        <h2 style="text-align: center;padding-bottom: 15px;">
+            <a href="{% url 'muallif_ochir' muallif.id %}">
+                ochirish
+            </a>
+        </h2> 
+    </button>
+    {%endfor%}
+    <br>
+    <br>
+    <hr>
+    <h1>Yangi  Muallif  qoshish</h1>
+    <br>
+    <form action="" method="post">{% csrf_token %}
+        {{forma}}
+        <button type="submit">saqlash</button>
+    </form>
+    <br>
+    <h1 style="color: bisque;background-color: black;width: 200px; border: 2px;border-radius: 5px;
+    border-color: blue;text-align: center;"><a href="{% url 'bosh_sahifa' %}">
+        bosh_sahifa
+    </a>
+    </h1>
+</body>
+</html>
